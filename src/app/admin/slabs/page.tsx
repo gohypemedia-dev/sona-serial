@@ -143,7 +143,7 @@ export default function AdminSlabsPage() {
     <div className="p-8 space-y-8 max-w-7xl mx-auto">
       <div className="flex justify-between items-end border-b border-zinc-100 pb-8">
         <div>
-          <h1 className="text-4xl font-headline font-black italic uppercase tracking-tighter">Manage <span className="text-[#CBA35C]">Slabs</span></h1>
+          <h1 className="text-4xl font-headline font-black uppercase tracking-tighter">Manage <span className="text-[#CBA35C]">Slabs</span></h1>
           <p className="text-zinc-500 font-bold text-xs uppercase tracking-[0.3em] mt-2">Elite Reward Infrastructure</p>
         </div>
       </div>
@@ -154,7 +154,7 @@ export default function AdminSlabsPage() {
            <div className="bg-white p-10 rounded-[3rem] shadow-2xl border border-zinc-100 sticky top-8">
             <div className="flex justify-between items-center mb-10">
                <div>
-                  <h2 className="text-2xl font-headline font-black uppercase italic leading-none">{editId ? 'Update' : 'Add New'} Slab</h2>
+                  <h2 className="text-2xl font-headline font-black uppercase leading-none">{editId ? 'Update' : 'Add New'} Slab</h2>
                   <p className="text-[10px] font-black text-[#CBA35C] uppercase tracking-[0.4em] mt-2">{editId ? 'Modify existing tier level' : 'Create a new reward milestone'}</p>
                </div>
                {editId && (
@@ -178,7 +178,7 @@ export default function AdminSlabsPage() {
                   <div className="grid gap-6">
                     <div className="space-y-4">
                        <div className="flex justify-between items-center">
-                          <label className="text-[10px] font-black uppercase tracking-widest text-zinc-950 block italic">Reward Option A</label>
+                          <label className="text-[10px] font-black uppercase tracking-widest text-zinc-950 block">Reward Option A</label>
                           {form.giftAImg && <span className="text-[9px] font-black text-green-600 uppercase">Image Uploaded</span>}
                        </div>
                        <input required value={form.giftA} onChange={e => setForm({...form, giftA: e.target.value})} className="w-full p-5 rounded-2xl bg-zinc-50 border border-zinc-100 outline-none focus:border-[#CBA35C] font-bold" placeholder="Gift Name (e.g. Microwave)" />
@@ -199,7 +199,7 @@ export default function AdminSlabsPage() {
                                    className="absolute inset-0 bg-black/60 opacity-0 group-hover/preview:opacity-100 transition-opacity flex items-center justify-center cursor-pointer"
                                 >
                                    <span className="text-white font-black text-[10px] uppercase tracking-widest flex items-center gap-2">
-                                      <span className="material-symbols-outlined italic text-sm">cached</span> Replace Image
+                                      <span className="material-symbols-outlined text-sm">cached</span> Replace Image
                                    </span>
                                 </div>
                              </div>
@@ -217,7 +217,7 @@ export default function AdminSlabsPage() {
 
                     <div className="space-y-4 pt-6 border-t border-zinc-100">
                        <div className="flex justify-between items-center">
-                          <label className="text-[10px] font-black uppercase tracking-widest text-zinc-950 block italic">Reward Option B (Optional)</label>
+                          <label className="text-[10px] font-black uppercase tracking-widest text-zinc-950 block">Reward Option B (Optional)</label>
                           {form.giftBImg && <span className="text-[9px] font-black text-green-600 uppercase">Image Uploaded</span>}
                        </div>
                        <input value={form.giftB} onChange={e => setForm({...form, giftB: e.target.value})} className="w-full p-5 rounded-2xl bg-zinc-50 border border-zinc-100 outline-none focus:border-[#CBA35C] font-bold" placeholder="Gift Name (e.g. JBL Speaker)" />
@@ -238,7 +238,7 @@ export default function AdminSlabsPage() {
                                    className="absolute inset-0 bg-black/60 opacity-0 group-hover/preview:opacity-100 transition-opacity flex items-center justify-center cursor-pointer"
                                 >
                                    <span className="text-white font-black text-[10px] uppercase tracking-widest flex items-center gap-2">
-                                      <span className="material-symbols-outlined italic text-sm">cached</span> Replace Image
+                                      <span className="material-symbols-outlined text-sm">cached</span> Replace Image
                                    </span>
                                 </div>
                              </div>
@@ -256,7 +256,7 @@ export default function AdminSlabsPage() {
 
                     <div className="space-y-4 pt-6 border-t border-zinc-100">
                        <div className="flex justify-between items-center">
-                          <label className="text-[10px] font-black uppercase tracking-widest text-zinc-950 block italic">Reward Option C (Optional)</label>
+                          <label className="text-[10px] font-black uppercase tracking-widest text-zinc-950 block">Reward Option C (Optional)</label>
                           {form.giftCImg && <span className="text-[9px] font-black text-green-600 uppercase">Image Uploaded</span>}
                        </div>
                        <input value={form.giftC} onChange={e => setForm({...form, giftC: e.target.value})} className="w-full p-5 rounded-2xl bg-zinc-50 border border-zinc-100 outline-none focus:border-[#CBA35C] font-bold" placeholder="Gift Name" />
@@ -266,7 +266,7 @@ export default function AdminSlabsPage() {
                              <div className="relative w-full aspect-video rounded-2xl overflow-hidden border-2 border-[#CBA35C] group/preview">
                                 <img src={form.giftCImg} className="w-full h-full object-contain bg-zinc-50" alt="Preview" />
                                 <div onClick={() => fileInputCRef.current?.click()} className="absolute inset-0 bg-black/60 opacity-0 group-hover/preview:opacity-100 transition-opacity flex items-center justify-center cursor-pointer">
-                                   <span className="text-white font-black text-[10px] uppercase tracking-widest flex items-center gap-2"><span className="material-symbols-outlined italic text-sm">cached</span> Replace Image</span>
+                                   <span className="text-white font-black text-[10px] uppercase tracking-widest flex items-center gap-2"><span className="material-symbols-outlined text-sm">cached</span> Replace Image</span>
                                 </div>
                              </div>
                           ) : (
@@ -280,7 +280,7 @@ export default function AdminSlabsPage() {
 
                     <div className="space-y-4 pt-6 border-t border-zinc-100">
                        <div className="flex justify-between items-center">
-                          <label className="text-[10px] font-black uppercase tracking-widest text-zinc-950 block italic">Reward Option D (Optional)</label>
+                          <label className="text-[10px] font-black uppercase tracking-widest text-zinc-950 block">Reward Option D (Optional)</label>
                           {form.giftDImg && <span className="text-[9px] font-black text-green-600 uppercase">Image Uploaded</span>}
                        </div>
                        <input value={form.giftD} onChange={e => setForm({...form, giftD: e.target.value})} className="w-full p-5 rounded-2xl bg-zinc-50 border border-zinc-100 outline-none focus:border-[#CBA35C] font-bold" placeholder="Gift Name" />
@@ -290,7 +290,7 @@ export default function AdminSlabsPage() {
                              <div className="relative w-full aspect-video rounded-2xl overflow-hidden border-2 border-[#CBA35C] group/preview">
                                 <img src={form.giftDImg} className="w-full h-full object-contain bg-zinc-50" alt="Preview" />
                                 <div onClick={() => fileInputDRef.current?.click()} className="absolute inset-0 bg-black/60 opacity-0 group-hover/preview:opacity-100 transition-opacity flex items-center justify-center cursor-pointer">
-                                   <span className="text-white font-black text-[10px] uppercase tracking-widest flex items-center gap-2"><span className="material-symbols-outlined italic text-sm">cached</span> Replace Image</span>
+                                   <span className="text-white font-black text-[10px] uppercase tracking-widest flex items-center gap-2"><span className="material-symbols-outlined text-sm">cached</span> Replace Image</span>
                                 </div>
                              </div>
                           ) : (
@@ -306,7 +306,7 @@ export default function AdminSlabsPage() {
                </div>
 
                <button className="w-full bg-zinc-900 text-[#CBA35C] font-headline font-black uppercase py-5 rounded-2xl hover:scale-[1.02] active:scale-95 transition-all shadow-2xl mt-8 flex items-center justify-center gap-3">
-                  <span className="material-symbols-outlined italic text-xl">{editId ? 'save_as' : 'add_task'}</span>
+                  <span className="material-symbols-outlined text-xl">{editId ? 'save_as' : 'add_task'}</span>
                   {editId ? 'Sync Updates' : 'Establish Slab'}
                </button>
             </form>
@@ -316,7 +316,7 @@ export default function AdminSlabsPage() {
         {/* List Container */}
         <div className="lg:col-span-7 space-y-6">
           <div className="flex items-center justify-between mb-8">
-            <h2 className="text-2xl font-headline font-black uppercase italic">Existing Slabs</h2>
+            <h2 className="text-2xl font-headline font-black uppercase">Existing Slabs</h2>
             <span className="px-5 py-1.5 bg-zinc-100 rounded-full text-[10px] font-black uppercase tracking-widest text-zinc-500">{slabs.length} Total Tiers</span>
           </div>
 
@@ -328,7 +328,7 @@ export default function AdminSlabsPage() {
           ) : slabs.length === 0 ? (
              <div className="text-center py-32 bg-white rounded-[3rem] border border-zinc-100 flex flex-col items-center justify-center gap-4">
                 <span className="material-symbols-outlined text-6xl text-zinc-100">inventory_2</span>
-                <p className="text-zinc-400 font-headline font-black text-2xl uppercase italic tracking-tighter">No slabs configured yet.</p>
+                <p className="text-zinc-400 font-headline font-black text-2xl uppercase tracking-tighter">No slabs configured yet.</p>
              </div>
           ) : (
             <div className="grid gap-6">
@@ -339,12 +339,12 @@ export default function AdminSlabsPage() {
                   <div className="flex items-center gap-8 relative z-10">
                     <div className="h-20 w-20 bg-zinc-900 text-[#CBA35C] flex flex-col items-center justify-center rounded-[1.5rem] shadow-2xl">
                       <span className="text-[10px] font-black uppercase tracking-widest opacity-50 leading-none mb-1">Tier</span>
-                      <span className="font-headline font-black text-3xl italic leading-none">{slab.level}</span>
+                      <span className="font-headline font-black text-3xl leading-none">{slab.level}</span>
                     </div>
                     <div>
                       <div className="flex items-baseline gap-2 mb-2">
-                        <h3 className="font-headline font-black text-4xl italic uppercase tracking-tighter text-zinc-900">{slab.target}</h3>
-                        <span className="text-[10px] font-black text-zinc-400 not-italic uppercase tracking-widest">Quintal Target</span>
+                        <h3 className="font-headline font-black text-4xl uppercase tracking-tighter text-zinc-900">{slab.target}</h3>
+                        <span className="text-[10px] font-black text-zinc-400 uppercase tracking-widest">Quintal Target</span>
                       </div>
                       <div className="flex items-center gap-3">
                          <span className="w-2 h-2 bg-[#CBA35C] rounded-full"></span>

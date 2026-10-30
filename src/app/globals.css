@@ -149,3 +149,43 @@ h1, h2, h3, h4, h5, h6 {
     max-height: calc(100dvh - 4.5rem);
   }
 }
+
+/* 3D Floating Layer Keyframe Animations */
+@keyframes float-gentle {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(0.6deg);
+  }
+}
+
+@keyframes float-subtle-left {
+  0%, 100% {
+    transform: translate(0px, 0px) rotate(-1.5deg);
+  }
+  50% {
+    transform: translate(-3px, -6px) rotate(-0.5deg);
+  }
+}
+
+@keyframes float-subtle-right {
+  0%, 100% {
+    transform: translate(0px, 0px) rotate(1.5deg);
+  }
+  50% {
+    transform: translate(3px, -5px) rotate(2.5deg);
+  }
+}
+
+.animate-float-gentle {
+  animation: float-gentle 6s ease-in-out infinite;
+}
+
+.animate-float-left {
+  animation: float-subtle-left 4.8s ease-in-out infinite;
+}
+
+.animate-float-right {
+  animation: float-subtle-right 5.4s ease-in-out infinite 0.4s;
+}

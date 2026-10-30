@@ -50,6 +50,51 @@ export default function HomePage() {
       return () => clearInterval(timer);
    }, []);
 
+   React.useEffect(() => {
+      const scrollToAuthCard = (smooth = true) => {
+         const card = document.getElementById("auth-card") || document.getElementById("registration-section");
+         if (card) {
+            const rect = card.getBoundingClientRect();
+            const headerOffset = 80;
+            const fits = rect.height < (window.innerHeight - headerOffset);
+            if (fits) {
+               card.scrollIntoView({ behavior: smooth ? "smooth" : "auto", block: "center" });
+            } else {
+               const targetTop = rect.top + window.scrollY - headerOffset - 16;
+               window.scrollTo({ top: targetTop, behavior: smooth ? "smooth" : "auto" });
+            }
+         }
+      };
+
+      const applyModeFromUrl = () => {
+         if (typeof window !== "undefined") {
+            const params = new URLSearchParams(window.location.search);
+            const m = params.get("mode");
+            if (m === "login") {
+               setMode("login");
+               setLoginMethod("email_otp");
+               setLoginStep("email");
+               setLoginError("");
+               scrollToAuthCard(false);
+               setTimeout(() => scrollToAuthCard(true), 100);
+               setTimeout(() => scrollToAuthCard(true), 300);
+            } else if (m === "register") {
+               setMode("register");
+               setStep(1);
+               setRegisterMethod("password");
+               setRegisterError("");
+               scrollToAuthCard(false);
+               setTimeout(() => scrollToAuthCard(true), 100);
+               setTimeout(() => scrollToAuthCard(true), 300);
+            }
+         }
+      };
+
+      applyModeFromUrl();
+      window.addEventListener("popstate", applyModeFromUrl);
+      return () => window.removeEventListener("popstate", applyModeFromUrl);
+   }, []);
+
    const totalSteps = 3;
    const progress = step === 0 ? 0 : (step / totalSteps) * 100;
 
@@ -431,7 +476,7 @@ export default function HomePage() {
                   { label: "Validation", val: "Instant" }
                ].map(stat => (
                   <div key={stat.label} className="text-center shrink-0 min-w-[120px]">
-                     <span className="block text-3xl md:text-4xl font-headline font-bold text-zinc-900 not-italic tracking-tight leading-none mb-1">{stat.val}</span>
+                     <span className="block text-3xl md:text-4xl font-headline font-bold text-zinc-900 tracking-tight leading-none mb-1">{stat.val}</span>
                      <span className="text-[9px] font-black text-[#CBA35C] uppercase tracking-[0.2em]">{stat.label}</span>
                   </div>
                ))}
@@ -439,9 +484,9 @@ export default function HomePage() {
          </section>
 
          {/* Entry Section */}
-         <section id="registration-section" className="py-6 md:py-24 bg-zinc-50 border-y border-zinc-100 scroll-mt-24">
+         <section id="registration-section" className="py-6 md:py-16 bg-zinc-50 border-y border-zinc-100 scroll-mt-20">
             <div className="container mx-auto px-0 md:px-6">
-               <div className="grid lg:grid-cols-12 shadow-[0_60px_120px_-20px_rgba(0,0,0,0.15)] md:rounded-[4rem] overflow-hidden bg-white border border-zinc-200">
+               <div id="auth-card" className="grid lg:grid-cols-12 shadow-[0_60px_120px_-20px_rgba(0,0,0,0.15)] md:rounded-[4rem] overflow-hidden bg-white border border-zinc-200 scroll-mt-24">
 
                   {/* Sidebar - Desktop Only Branding */}
                   <div className="hidden lg:flex lg:col-span-4 bg-zinc-900 p-12 flex-col justify-between text-white relative overflow-hidden">
@@ -450,11 +495,7 @@ export default function HomePage() {
 
                      <div className="relative z-10 space-y-12">
                         <div className="space-y-4">
-                           <div className="flex items-center gap-2">
-                              <div className="h-1 w-12 bg-[#CBA35C]"></div>
-                              <div className="h-1 w-4 bg-white/20"></div>
-                           </div>
-                           <h3 className="text-3xl font-headline font-black uppercase leading-tight italic">
+                           <h3 className="text-3xl font-headline font-black uppercase leading-tight">
                               RETAILER <br />
                               <span className="text-[#CBA35C]">SYSTEMS.</span>
                            </h3>
@@ -474,7 +515,7 @@ export default function HomePage() {
                                  </div>
                                  <div className="hidden sm:block">
                                     <span className={`block text-[10px] font-black uppercase tracking-widest ${step >= s.id ? 'text-[#CBA35C]' : 'text-white/40'}`}>{s.sub}</span>
-                                    <span className={`text-lg font-headline font-black uppercase italic leading-none ${step >= s.id ? 'text-white' : 'text-white/40'}`}>{s.label}</span>
+                                    <span className={`text-lg font-headline font-bold uppercase leading-none ${step >= s.id ? 'text-white' : 'text-white/40'}`}>{s.label}</span>
                                  </div>
                               </div>
                            ))}
@@ -484,7 +525,7 @@ export default function HomePage() {
                      <div className="relative z-10 pt-12 border-t border-white/10">
                         <div className="flex justify-between items-end mb-4">
                            <span className="text-[10px] font-black uppercase tracking-widest text-zinc-500">Validation Progress</span>
-                           <span className="text-4xl font-headline font-black italic text-[#CBA35C]">{Math.round(progress)}%</span>
+                           <span className="text-4xl font-headline font-bold text-[#CBA35C]">{Math.round(progress)}%</span>
                         </div>
                         <div className="w-full h-2 bg-white/10 rounded-full overflow-hidden">
                            <div className="h-full bg-[#CBA35C] transition-all duration-700 ease-out shadow-[0_0_15px_rgba(203,163,92,0.4)]" style={{ width: `${progress}%` }}></div>
@@ -497,10 +538,10 @@ export default function HomePage() {
                      {mode === 'selection' ? (
                         <div className="space-y-12 text-center animate-in fade-in duration-700 slide-in-from-bottom-8">
                            <div className="space-y-4">
-                              <h3 className="text-2xl md:text-5xl font-headline font-black uppercase text-zinc-900 leading-none italic">
+                              <h3 className="text-2xl md:text-5xl font-headline font-black uppercase text-zinc-900 leading-none">
                                  CHOOSE YOUR <br className="md:hidden" /> <span className="text-[#CBA35C]">ENTRY.</span>
                               </h3>
-                              <p className="text-zinc-500 text-sm md:text-lg font-medium italic px-4">Welcome to the Sona Cereal Official Infrastructure.</p>
+                              <p className="text-zinc-500 text-sm md:text-lg font-bold px-4">Welcome to the Sona Cereal Official Infrastructure.</p>
                            </div>
 
                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 max-w-2xl mx-auto pt-4 md:pt-8">
@@ -508,7 +549,7 @@ export default function HomePage() {
                                  <div className="absolute top-0 right-0 w-32 h-22 bg-[#CBA35C]/20 rounded-full blur-3xl group-hover:bg-[#CBA35C]/40 transition-all"></div>
                                  <span className="material-symbols-outlined text-3xl md:text-5xl text-[#CBA35C] group-hover:rotate-12 transition-transform">login</span>
                                  <div className="text-left md:text-center relative z-10">
-                                    <h4 className="text-xl md:text-2xl font-headline font-black uppercase italic leading-none mb-1 md:mb-2 text-white">LOGIN</h4>
+                                    <h4 className="text-xl md:text-2xl font-headline font-bold uppercase leading-none mb-1 md:mb-2 text-white">LOGIN</h4>
                                     <p className="text-[8px] md:text-[10px] font-black uppercase tracking-widest text-zinc-500">Retailer Portal</p>
                                  </div>
                               </button>
@@ -517,7 +558,7 @@ export default function HomePage() {
                                  <div className="absolute top-0 right-0 w-32 h-32 bg-[#CBA35C]/5 rounded-full blur-3xl group-hover:bg-[#CBA35C]/10 transition-all"></div>
                                  <span className="material-symbols-outlined text-3xl md:text-5xl text-zinc-400 group-hover:rotate-12 transition-transform">how_to_reg</span>
                                  <div className="text-left md:text-center relative z-10">
-                                    <h4 className="text-xl md:text-2xl font-headline font-black uppercase italic leading-none mb-1 md:mb-2 text-zinc-900">REGISTER</h4>
+                                    <h4 className="text-xl md:text-2xl font-headline font-bold uppercase leading-none mb-1 md:mb-2 text-zinc-900">REGISTER</h4>
                                     <p className="text-[8px] md:text-[10px] font-black uppercase tracking-widest text-zinc-400">New Partner Portal</p>
                                  </div>
                               </button>
@@ -529,10 +570,10 @@ export default function HomePage() {
                               <button onClick={() => setMode('selection')} className="flex items-center gap-2 text-zinc-400 hover:text-zinc-900 transition-colors text-[10px] font-black uppercase tracking-[0.3em] mb-4">
                                  <span className="material-symbols-outlined">west</span> Back to Choices
                               </button>
-                              <h3 className="text-2xl md:text-5xl font-headline font-black uppercase text-zinc-900 leading-none italic">
+                              <h3 className="text-2xl md:text-5xl font-headline font-black uppercase text-zinc-900 leading-none">
                                  SECURE <span className="text-[#CBA35C]">LOGIN.</span>
                               </h3>
-                               <p className="text-zinc-400 text-sm md:text-lg font-medium italic">
+                               <p className="text-zinc-400 text-sm md:text-lg font-medium">
                                   {loginMethod === 'email_otp'
                                      ? (loginStep === 'email' ? 'Enter your registered email to receive a secure code.' : 'Enter the 6-digit code sent to your email.')
                                      : 'Use your registered email or phone number with the password you created.'}
@@ -560,7 +601,7 @@ export default function HomePage() {
                               {loginMethod === 'email_otp' ? (
                                  loginStep === 'email' ? (
                                     <div className="space-y-2">
-                                       <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500 italic">Registered Email</label>
+                                       <label className="text-[10px] md:text-xs font-bold uppercase tracking-wider text-zinc-500">Registered Email</label>
                                        <input
                                           type="email"
                                           value={loginIdentifier}
@@ -569,11 +610,11 @@ export default function HomePage() {
                                           className="w-full p-5 rounded-2xl bg-zinc-50 border border-zinc-100 outline-none focus:border-[#CBA35C] font-medium"
                                           required
                                        />
-                                       <p className="text-[9px] text-zinc-400 italic">Secure validation for authorized partners only.</p>
+                                       <p className="text-[9px] text-zinc-400">Secure validation for authorized partners only.</p>
                                     </div>
                                  ) : (
                                     <div className="space-y-2">
-                                       <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500 italic">Secure OTP Code</label>
+                                       <label className="text-[10px] md:text-xs font-bold uppercase tracking-wider text-zinc-500">Secure OTP Code</label>
                                        <input
                                           type="text"
                                           value={loginOtp}
@@ -589,7 +630,7 @@ export default function HomePage() {
                               ) : (
                                  <>
                                     <div className="space-y-2">
-                                       <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500 italic">Registered Email</label>
+                                       <label className="text-[10px] md:text-xs font-bold uppercase tracking-wider text-zinc-500">Registered Email</label>
                                        <input
                                           type="email"
                                           value={loginIdentifier}
@@ -600,7 +641,7 @@ export default function HomePage() {
                                        />
                                     </div>
                                     <div className="space-y-2">
-                                       <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500 italic">Password</label>
+                                       <label className="text-[10px] md:text-xs font-bold uppercase tracking-wider text-zinc-500">Password</label>
                                        <input
                                           type="password"
                                           value={loginPassword}
@@ -638,9 +679,11 @@ export default function HomePage() {
                                  {loginMethod === 'email_otp'
                                     ? (loginStep === 'email' ? 'GENERATE SECURE CODE' : 'VALIDATE & ACCESS PORTAL')
                                     : 'LOGIN WITH PASSWORD'}
-                                 <span className="material-symbols-outlined">
-                                    {loginMethod === 'email_otp' ? (loginStep === 'email' ? 'send' : 'verified_user') : 'key'}
-                                 </span>
+                                 {loginMethod === 'email_otp' && loginStep === 'email' ? null : (
+                                    <span className="material-symbols-outlined">
+                                       {loginMethod === 'email_otp' ? 'verified_user' : 'key'}
+                                    </span>
+                                 )}
                               </button>
                            </form>
                         </div>
@@ -652,7 +695,7 @@ export default function HomePage() {
                               </button>
                               <div>
                                  <span className="text-[#CBA35C] font-black uppercase tracking-widest text-[10px] md:text-xs text-left block">Phase {step} of 3</span>
-                                 <h3 className="text-2xl md:text-5xl font-headline font-black uppercase text-zinc-900 mt-2 leading-none italic text-left">
+                                 <h3 className="text-2xl md:text-5xl font-headline font-black uppercase text-zinc-900 mt-2 leading-none text-left">
                                     {step === 1 ? "PROFILE" : step === 2 ? "IDENTITY" : "VALIDATE"}
                                  </h3>
                                  <div className="w-16 md:w-24 h-1.5 md:h-2 bg-[#CBA35C] mt-4 md:mt-6"></div>
@@ -663,7 +706,7 @@ export default function HomePage() {
                               {step === 1 && (
                                  <div className="space-y-6 md:space-y-10">
                                     <div className="space-y-4 text-left">
-                                       <label className="text-[10px] mr-4 font-black uppercase tracking-widest text-zinc-500 italic">Registration Method</label>
+                                       <label className="text-[10px] md:text-xs mr-4 font-bold uppercase tracking-wider text-zinc-500">Registration Method</label>
                                        <div className="mt-2 inline-flex rounded-full border-2 border-zinc-200 bg-white p-2 shadow-sm gap-2">
                                           <button
                                              type="button"
@@ -684,8 +727,8 @@ export default function HomePage() {
 
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-10 text-left">
                                        <div className="space-y-2">
-                                          <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500 italic flex items-center gap-2">
-                                             <span className="material-symbols-outlined text-sm text-[#CBA35C]">person</span> Propriertor Name
+                                          <label className="text-[10px] md:text-xs font-bold uppercase tracking-wider text-zinc-500 flex items-center gap-2">
+                                             <span className="material-symbols-outlined text-sm text-[#CBA35C]">person</span> Proprietor Name
                                           </label>
                                           <input
                                              name="name"
@@ -696,10 +739,10 @@ export default function HomePage() {
                                              type="text"
                                              required
                                           />
-                                          {fieldErrors.name && <p className="text-red-500 text-[9px] font-bold uppercase tracking-widest italic">{fieldErrors.name}</p>}
+                                          {fieldErrors.name && <p className="text-red-500 text-[9px] font-bold uppercase tracking-widest">{fieldErrors.name}</p>}
                                        </div>
                                        <div className="space-y-2">
-                                          <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500 italic flex items-center gap-2">
+                                          <label className="text-[10px] md:text-xs font-bold uppercase tracking-wider text-zinc-500 flex items-center gap-2">
                                              <span className="material-symbols-outlined text-sm text-[#CBA35C]">storefront</span> Shop / Entity Name
                                           </label>
                                           <input
@@ -711,10 +754,10 @@ export default function HomePage() {
                                              type="text"
                                              required
                                           />
-                                          {fieldErrors.shopName && <p className="text-red-500 text-[9px] font-bold uppercase tracking-widest italic">{fieldErrors.shopName}</p>}
+                                          {fieldErrors.shopName && <p className="text-red-500 text-[9px] font-bold uppercase tracking-widest">{fieldErrors.shopName}</p>}
                                        </div>
                                        <div className="space-y-2">
-                                          <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500 italic flex items-center gap-2">
+                                          <label className="text-[10px] md:text-xs font-bold uppercase tracking-wider text-zinc-500 flex items-center gap-2">
                                              <span className="material-symbols-outlined text-sm text-[#CBA35C]">smartphone</span> Primary Contact
                                           </label>
                                           <input
@@ -726,10 +769,10 @@ export default function HomePage() {
                                              type="tel"
                                              required
                                           />
-                                          {fieldErrors.phone && <p className="text-red-500 text-[9px] font-bold uppercase tracking-widest italic">{fieldErrors.phone}</p>}
+                                          {fieldErrors.phone && <p className="text-red-500 text-[9px] font-bold uppercase tracking-widest">{fieldErrors.phone}</p>}
                                        </div>
                                        <div className="space-y-2">
-                                          <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500 italic flex items-center gap-2">
+                                          <label className="text-[10px] md:text-xs font-bold uppercase tracking-wider text-zinc-500 flex items-center gap-2">
                                              <span className="material-symbols-outlined text-sm text-[#CBA35C]">mail</span> Business Email
                                           </label>
                                           <input
@@ -741,10 +784,10 @@ export default function HomePage() {
                                              type="email"
                                              required
                                           />
-                                          {fieldErrors.email && <p className="text-red-500 text-[9px] font-bold uppercase tracking-widest italic">{fieldErrors.email}</p>}
+                                          {fieldErrors.email && <p className="text-red-500 text-[9px] font-bold uppercase tracking-widest">{fieldErrors.email}</p>}
                                         </div>
                                         <div className="space-y-2">
-                                           <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500 italic flex items-center gap-2">
+                                           <label className="text-[10px] md:text-xs font-bold uppercase tracking-wider text-zinc-500 flex items-center gap-2">
                                              <span className="material-symbols-outlined text-sm text-[#CBA35C]">location_on</span> City / Region
                                           </label>
                                           <input
@@ -756,14 +799,14 @@ export default function HomePage() {
                                              type="text"
                                              required
                                           />
-                                          {fieldErrors.city && <p className="text-red-500 text-[9px] font-bold uppercase tracking-widest italic">{fieldErrors.city}</p>}
+                                          {fieldErrors.city && <p className="text-red-500 text-[9px] font-bold uppercase tracking-widest">{fieldErrors.city}</p>}
                                         </div>
                                      </div>
 
                                      {registerMethod === 'password' ? (
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-10 text-left">
                                            <div className="space-y-2">
-                                              <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500 italic flex items-center gap-2">
+                                              <label className="text-[10px] md:text-xs font-bold uppercase tracking-wider text-zinc-500 flex items-center gap-2">
                                                  <span className="material-symbols-outlined text-sm text-[#CBA35C]">key</span> Create Password
                                               </label>
                                               <input
@@ -775,10 +818,10 @@ export default function HomePage() {
                                                  type="password"
                                                  required
                                               />
-                                              {fieldErrors.password && <p className="text-red-500 text-[9px] font-bold uppercase tracking-widest italic">{fieldErrors.password}</p>}
+                                              {fieldErrors.password && <p className="text-red-500 text-[9px] font-bold uppercase tracking-widest">{fieldErrors.password}</p>}
                                            </div>
                                            <div className="space-y-2">
-                                              <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500 italic flex items-center gap-2">
+                                              <label className="text-[10px] md:text-xs font-bold uppercase tracking-wider text-zinc-500 flex items-center gap-2">
                                                  <span className="material-symbols-outlined text-sm text-[#CBA35C]">verified</span> Confirm Password
                                               </label>
                                               <input
@@ -790,14 +833,14 @@ export default function HomePage() {
                                                  type="password"
                                                  required
                                               />
-                                              {fieldErrors.confirmPassword && <p className="text-red-500 text-[9px] font-bold uppercase tracking-widest italic">{fieldErrors.confirmPassword}</p>}
+                                              {fieldErrors.confirmPassword && <p className="text-red-500 text-[9px] font-bold uppercase tracking-widest">{fieldErrors.confirmPassword}</p>}
                                            </div>
                                         </div>
                                      ) : (
                                         <div className="rounded-[2rem] border border-zinc-200 bg-zinc-50 p-5 md:p-8 text-left space-y-5">
                                            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                                               <div>
-                                                 <h4 className="text-lg font-headline font-black uppercase italic text-zinc-900">Verify Email OTP</h4>
+                                                 <h4 className="text-lg font-headline font-black uppercase text-zinc-900">Verify Email OTP</h4>
                                                  <p className="text-zinc-500 text-xs">Send a 6-digit code to the business email and verify it before moving ahead.</p>
                                               </div>
                                               <button type="button" onClick={handleSendEmailOtp} className="px-6 py-3.5 rounded-full bg-zinc-900 text-white text-[11px] md:text-xs font-black uppercase tracking-[0.2em] shadow-lg hover:bg-[#CBA35C] hover:text-black transition-all">
@@ -814,7 +857,7 @@ export default function HomePage() {
                                                     type="text"
                                                     maxLength={6}
                                                  />
-                                                 {fieldErrors.emailOtp && <p className="text-red-500 text-[9px] font-bold uppercase tracking-widest italic">{fieldErrors.emailOtp}</p>}
+                                                 {fieldErrors.emailOtp && <p className="text-red-500 text-[9px] font-bold uppercase tracking-widest">{fieldErrors.emailOtp}</p>}
                                                  {emailOtpStatus && (
                                                     <p className={`text-[11px] md:text-xs font-black uppercase tracking-widest ${emailOtpVerified ? 'text-green-700' : 'text-zinc-500'}`}>
                                                        {emailOtpStatus}
@@ -870,7 +913,7 @@ export default function HomePage() {
 
                                     <div className="flex items-center justify-end pt-10 border-t border-zinc-100">
                                        <button type="button" onClick={handleRegistrationStep1Next} className="group flex items-center gap-4 text-zinc-900 hover:text-[#CBA35C] transition-all p-4 active:scale-90">
-                                          <span className="font-headline font-black text-sm md:text-lg uppercase tracking-widest italic">Identity Step</span>
+                                          <span className="font-headline font-black text-sm md:text-lg uppercase tracking-widest">Identity Step</span>
                                           <div className="w-16 h-16 rounded-full border-2 border-zinc-100 flex items-center justify-center group-hover:border-[#CBA35C] group-hover:bg-[#CBA35C] group-hover:text-black transition-all">
                                              <span className="material-symbols-outlined text-3xl font-black transition-transform group-hover:translate-x-1">arrow_forward</span>
                                           </div>
@@ -887,7 +930,7 @@ export default function HomePage() {
                                              <span className="material-symbols-outlined text-3xl md:text-5xl text-[#CBA35C] font-black">badge</span>
                                           </div>
                                           <div className="space-y-1 md:space-y-2">
-                                             <h4 className="text-lg md:text-2xl font-headline font-black uppercase tracking-tight text-zinc-900 italic">ID FRONT</h4>
+                                             <h4 className="text-lg md:text-2xl font-headline font-black uppercase tracking-tight text-zinc-900">ID FRONT</h4>
                                              <p className="text-zinc-500 text-[8px] md:text-[10px] font-black uppercase tracking-widest">Aadhar Front Side</p>
                                           </div>
                                           <label className={`px-8 md:px-10 py-3 md:py-4 ${aadharFront ? 'bg-green-500' : 'bg-zinc-900'} text-white rounded-full font-black text-[9px] md:text-[10px] uppercase tracking-widest cursor-pointer hover:bg-[#CBA35C] hover:text-black transition-all`}>
@@ -901,7 +944,7 @@ export default function HomePage() {
                                              <span className="material-symbols-outlined text-3xl md:text-5xl text-[#CBA35C] font-black">receipt_long</span>
                                           </div>
                                           <div className="space-y-1 md:space-y-2">
-                                             <h4 className="text-lg md:text-2xl font-headline font-black uppercase tracking-tight text-zinc-900 italic">ID BACK</h4>
+                                             <h4 className="text-lg md:text-2xl font-headline font-black uppercase tracking-tight text-zinc-900">ID BACK</h4>
                                              <p className="text-zinc-500 text-[8px] md:text-[10px] font-black uppercase tracking-widest">Aadhar Back Side</p>
                                           </div>
                                           <label className={`px-8 md:px-10 py-3 md:py-4 ${aadharBack ? 'bg-green-500' : 'bg-zinc-900'} text-white rounded-full font-black text-[9px] md:text-[10px] uppercase tracking-widest cursor-pointer hover:bg-[#CBA35C] hover:text-black transition-all`}>
@@ -910,13 +953,13 @@ export default function HomePage() {
                                           </label>
                                        </div>
                                     </div>
-                                    {fieldErrors.aadhar && <p className="text-red-500 text-[10px] font-bold uppercase tracking-widest italic text-center mb-6">{fieldErrors.aadhar}</p>}
+                                    {fieldErrors.aadhar && <p className="text-red-500 text-[10px] font-bold uppercase tracking-widest text-center mb-6">{fieldErrors.aadhar}</p>}
                                     <div className="flex items-center justify-between pt-10 border-t border-zinc-100">
                                        <button type="button" onClick={() => { setStep(step - 1); setFieldErrors({}); }} className="group flex items-center gap-4 text-zinc-400 hover:text-zinc-900 transition-all p-4 active:scale-90">
                                           <div className="w-12 h-12 rounded-full border border-zinc-200 flex items-center justify-center group-hover:border-zinc-900 transition-all">
                                              <span className="material-symbols-outlined text-xl transition-transform group-hover:-translate-x-1">arrow_back</span>
                                           </div>
-                                          <span className="font-headline font-black text-sm uppercase tracking-widest italic">Back</span>
+                                          <span className="font-headline font-black text-sm uppercase tracking-widest">Back</span>
                                        </button>
                                        <button 
                                           type="button" 
@@ -930,7 +973,7 @@ export default function HomePage() {
                                           }} 
                                           className="group flex items-center gap-4 text-zinc-900 hover:text-[#CBA35C] transition-all p-4 active:scale-90"
                                        >
-                                          <span className="font-headline font-black text-sm md:text-lg uppercase tracking-widest italic">VALIDATE NOW</span>
+                                          <span className="font-headline font-black text-sm md:text-lg uppercase tracking-widest">VALIDATE NOW</span>
                                           <div className="w-16 h-16 rounded-full border-2 border-zinc-100 flex items-center justify-center group-hover:border-[#CBA35C] group-hover:bg-[#CBA35C] group-hover:text-black transition-all">
                                              <span className="material-symbols-outlined text-3xl font-black transition-transform group-hover:translate-x-1">arrow_forward</span>
                                           </div>
@@ -947,8 +990,8 @@ export default function HomePage() {
                                        </div>
                                     </div>
                                     <div className="space-y-4 max-w-sm mx-auto px-6">
-                                       <h5 className="text-l font-headline font-black uppercase italic tracking-tight text-zinc-900 leading-none">Business Registered Successfully</h5>
-                                       <p className="text-zinc-500 text-sm font-medium italic">Sell Sona Cereal slabs to hit our exclusive rewards tiers. Once you reach a milestoneof 200qtl+ claim your rewards instantly!</p>
+                                       <h5 className="text-l font-headline font-black uppercase tracking-tight text-zinc-900 leading-none">Business Registered Successfully</h5>
+                                       <p className="text-zinc-500 text-sm font-medium">Sell Sona Cereal slabs to hit our exclusive rewards tiers. Once you reach a milestoneof 200qtl+ claim your rewards instantly!</p>
                                     </div>
                                     <div className="pt-8 flex flex-col items-center gap-6">
                                        <button type="submit" disabled={isSubmitting} className="group bg-zinc-900 text-white px-12 py-6 rounded-full font-headline font-black text-lg uppercase tracking-widest hover:bg-[#CBA35C] hover:text-black transition-all shadow-2xl flex items-center gap-6 active:scale-95 disabled:opacity-50">

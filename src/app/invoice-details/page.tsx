@@ -64,11 +64,11 @@ export default function InvoiceDetailsPage() {
                   <span className="w-1.5 h-1.5 bg-[#CBA35C] rounded-full animate-pulse"></span>
                   <span className="text-[10px] font-black uppercase tracking-[0.3em]">Official Submission Portal</span>
                </div>
-               <h2 className="font-headline font-black text-4xl md:text-7xl italic uppercase text-zinc-900 leading-none tracking-tighter mb-4">
+               <h2 className="font-headline font-black text-4xl md:text-7xl uppercase text-zinc-900 leading-none tracking-tighter mb-4">
                   INVOICE <br />
                   <span className="text-[#CBA35C]">DETAILS.</span>
                </h2>
-               <p className="text-zinc-400 font-medium italic text-lg uppercase tracking-widest">Submit your performance records for validation.</p>
+               <p className="text-zinc-400 font-medium text-lg uppercase tracking-widest">Submit your performance records for validation.</p>
             </div>
          </section>
 
@@ -78,7 +78,7 @@ export default function InvoiceDetailsPage() {
                <form onSubmit={handleSubmit} className="bg-zinc-50 p-8 md:p-16 rounded-[4rem] border border-zinc-100 shadow-2xl space-y-10">
                   <div className="grid gap-8">
                      <div className="space-y-2">
-                        <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500 italic flex items-center gap-2">
+                        <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500 flex items-center gap-2">
                            <span className="material-symbols-outlined text-sm text-[#CBA35C]">calendar_month</span> Invoice Date
                         </label>
                         <input
@@ -92,7 +92,7 @@ export default function InvoiceDetailsPage() {
                      </div>
                      
                      <div className="space-y-2">
-                        <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500 italic flex items-center gap-2">
+                        <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500 flex items-center gap-2">
                            <span className="material-symbols-outlined text-sm text-[#CBA35C]">description</span> Invoice Number
                         </label>
                         <input
@@ -107,7 +107,7 @@ export default function InvoiceDetailsPage() {
                      </div>
 
                      <div className="space-y-2">
-                        <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500 italic flex items-center gap-2">
+                        <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500 flex items-center gap-2">
                            <span className="material-symbols-outlined text-sm text-[#CBA35C]">reorder</span> Quantity (Qtl)
                         </label>
                         <input

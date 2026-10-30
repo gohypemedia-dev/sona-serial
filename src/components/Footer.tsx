@@ -26,7 +26,7 @@ export default function Footer() {
                 className="h-10 md:h-12 w-auto brightness-0 invert opacity-90 group-hover:opacity-100 transition-opacity"
               />
               <div className="flex flex-col gap-2">
-                <span className="text-2xl md:text-3xl font-headline font-black italic uppercase leading-none text-white">
+                <span className="text-2xl md:text-3xl font-headline font-black uppercase leading-none text-white">
                   SONA CEREAL
                 </span>
                 <span className="text-xs font-black uppercase tracking-[0.4em] text-zinc-500">
@@ -34,7 +34,7 @@ export default function Footer() {
                 </span>
               </div>
             </Link>
-            <p className="text-sm md:text-base text-zinc-400 font-medium leading-relaxed max-w-md italic">
+            <p className="text-sm md:text-base text-zinc-400 font-medium leading-relaxed max-w-md">
               Empowering the next generation of retailers through premium grains and performance-driven digital rewards. Experience the Sona Cereal standard.
             </p>
             <div className="flex gap-3.5">
@@ -90,7 +90,7 @@ export default function Footer() {
           <div className="lg:col-span-7 grid grid-cols-2 md:grid-cols-3 gap-6 lg:gap-8">
             {/* Portal Column */}
             <div className="space-y-5">
-              <span className="block text-sm md:text-base font-black uppercase tracking-wider text-primary italic mb-4 md:mb-5">
+              <span className="block text-sm md:text-base font-black uppercase tracking-wider text-primary mb-4 md:mb-5">
                 Portal
               </span>
               <nav className="flex flex-col gap-3">
@@ -123,7 +123,7 @@ export default function Footer() {
 
             {/* Legal Column */}
             <div className="space-y-5">
-              <span className="block text-sm md:text-base font-black uppercase tracking-wider text-primary italic mb-4 md:mb-5">
+              <span className="block text-sm md:text-base font-black uppercase tracking-wider text-primary mb-4 md:mb-5">
                 Legal
               </span>
               <nav className="flex flex-col gap-3">
@@ -150,7 +150,7 @@ export default function Footer() {
 
             {/* Support Column */}
             <div className="space-y-5 col-span-2 md:col-span-1">
-              <span className="block text-sm md:text-base font-black uppercase tracking-wider text-primary italic mb-4 md:mb-5">
+              <span className="block text-sm md:text-base font-black uppercase tracking-wider text-primary mb-4 md:mb-5">
                 Support
               </span>
               <div className="p-5 bg-white/5 rounded-2xl border border-white/10 space-y-3.5 max-w-xs">
@@ -159,7 +159,7 @@ export default function Footer() {
                 </p>
                 <Link
                   href="/helpdesk"
-                  className="inline-flex items-center gap-2 text-sm font-black uppercase italic text-primary hover:gap-3 transition-all"
+                  className="inline-flex items-center gap-2 text-sm font-black uppercase text-primary hover:gap-3 transition-all"
                 >
                   PORTAL SUPPORT{" "}
                   <span className="material-symbols-outlined text-sm">
@@ -181,7 +181,7 @@ export default function Footer() {
             onClick={scrollToTop}
             className="group flex items-center gap-3"
           >
-            <span className="text-xs font-black uppercase tracking-widest text-zinc-500 group-hover:text-primary transition-colors italic">
+            <span className="text-xs font-black uppercase tracking-widest text-zinc-500 group-hover:text-primary transition-colors">
               Back to summit
             </span>
             <div className="w-10 h-10 border border-white/10 rounded-full flex items-center justify-center group-hover:border-primary group-hover:bg-primary transition-all">

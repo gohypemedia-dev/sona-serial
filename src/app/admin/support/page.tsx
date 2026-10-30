@@ -44,7 +44,7 @@ export default function AdminSupportPage() {
       <div className="p-8 md:p-12 space-y-12 animate-in fade-in slide-in-from-bottom-4 duration-700">
          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
             <div>
-               <h1 className="font-headline font-black text-4xl md:text-7xl italic uppercase text-zinc-900 leading-[0.85] tracking-tighter">
+               <h1 className="font-headline font-black text-4xl md:text-7xl uppercase text-zinc-900 leading-[0.85] tracking-tighter">
                   SUPPORT <br />
                   <span className="text-[#CBA35C]">MESSAGES.</span>
                </h1>
@@ -53,11 +53,11 @@ export default function AdminSupportPage() {
             <div className="bg-zinc-900 p-6 rounded-[2rem] border border-white/5 flex gap-12 text-white">
                <div>
                   <span className="block text-[8px] font-black uppercase tracking-widest text-[#CBA35C] mb-1">Total Queries</span>
-                  <span className="text-3xl font-headline font-black italic">{tickets.length}</span>
+                  <span className="text-3xl font-headline font-black">{tickets.length}</span>
                </div>
                <div className="border-l border-white/10 pl-12">
                   <span className="block text-[8px] font-black uppercase tracking-widest text-zinc-500 mb-1">Pending Responses</span>
-                  <span className="text-3xl font-headline font-black italic text-rose-500">
+                  <span className="text-3xl font-headline font-black text-rose-500">
                      {tickets.filter(t => t.status === 'pending').length}
                   </span>
                </div>
@@ -70,7 +70,7 @@ export default function AdminSupportPage() {
             </div>
          ) : tickets.length === 0 ? (
             <div className="bg-white border-2 border-dashed border-zinc-200 rounded-[3rem] p-24 text-center">
-               <p className="text-zinc-400 font-headline font-black text-3xl uppercase italic tracking-tighter">No Messages Found.</p>
+               <p className="text-zinc-400 font-headline font-black text-3xl uppercase tracking-tighter">No Messages Found.</p>
             </div>
          ) : (
             <div className="grid grid-cols-1 gap-6">
@@ -80,19 +80,19 @@ export default function AdminSupportPage() {
                      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                         <div className="lg:col-span-3">
                            <span className="block text-[8px] font-black uppercase tracking-widest text-zinc-400 mb-1">Partner Credential</span>
-                           <h3 className="text-2xl font-headline font-black text-zinc-900 italic uppercase leading-none">{ticket.phone}</h3>
+                           <h3 className="text-2xl font-headline font-black text-zinc-900 uppercase leading-none">{ticket.phone}</h3>
                            <div className="mt-2 inline-flex items-center gap-2 bg-[#CBA35C]/10 px-3 py-1 rounded-full border border-[#CBA35C]/20">
                               <span className="text-[9px] font-black uppercase tracking-widest text-[#CBA35C]">{ticket.category}</span>
                            </div>
                         </div>
                         <div className="lg:col-span-6 bg-zinc-50 p-6 rounded-2xl border border-zinc-100">
-                           <span className="block text-[8px] font-black uppercase tracking-widest text-zinc-400 mb-2 italic">Partner Transmission:</span>
+                           <span className="block text-[8px] font-black uppercase tracking-widest text-zinc-400 mb-2">Partner Transmission:</span>
                            <p className="text-zinc-600 font-medium text-sm leading-relaxed">{ticket.message}</p>
                         </div>
                         <div className="lg:col-span-3 flex flex-col items-end gap-4">
                            <div className="text-right">
                               <span className="block text-[8px] font-black uppercase tracking-widest text-zinc-400 mb-1">Time Logged</span>
-                              <span className="text-xs font-black uppercase italic text-zinc-900">{new Date(ticket.createdAt).toLocaleString()}</span>
+                              <span className="text-xs font-black uppercase text-zinc-900">{new Date(ticket.createdAt).toLocaleString()}</span>
                            </div>
                            <button 
                               onClick={() => updateStatus(ticket.id, ticket.status)}

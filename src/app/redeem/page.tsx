@@ -207,7 +207,7 @@ export default function RedeemPage() {
       <div className="bg-white pb-24 font-body">
          {/* SPACED HIGH-OCTANE HERO SECTION */}
          <section className="relative md:min-h-[500px] flex items-center overflow-hidden pt-4 md:pt-24 pb-12" style={{ background: "linear-gradient(135deg, #ffffff 0%, #f9f9f9 50%, #f4f1ea 100%)" }}>
-            <div className="container mx-auto px-6 relative z-10">
+            <div className="container mx-auto px-6 md:px-10 relative z-10">
                <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
                   <div className="space-y-6 md:space-y-8">
                      <div className="inline-flex items-center gap-2 bg-white px-4 py-1.5 rounded-full border border-zinc-200 shadow-sm">

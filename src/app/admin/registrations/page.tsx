@@ -82,8 +82,8 @@ export default function AdminRegistrations() {
                   <header className="flex justify-between items-start mb-12">
                      <div className="space-y-2">
                         <span className="text-[10px] font-black uppercase tracking-widest text-[#CBA35C]">Registered Entity Profile</span>
-                        <h3 className="text-4xl md:text-5xl font-headline font-black text-zinc-900 italic uppercase leading-none">{selectedUser.name}</h3>
-                        <p className="text-zinc-500 font-medium italic flex items-center gap-2">
+                        <h3 className="text-4xl md:text-5xl font-headline font-black text-zinc-900 uppercase leading-none">{selectedUser.name}</h3>
+                        <p className="text-zinc-500 font-medium flex items-center gap-2">
                            <span className="material-symbols-outlined text-sm text-[#CBA35C]">storefront</span> {selectedUser.shopName}
                         </p>
                      </div>
@@ -95,7 +95,7 @@ export default function AdminRegistrations() {
                   <div className="grid lg:grid-cols-2 gap-12">
                      <div className="space-y-10">
                         <div className="bg-zinc-50/50 p-8 rounded-[2rem] border border-zinc-100 space-y-6">
-                           <h4 className="text-xl font-headline font-black text-zinc-900 border-b border-zinc-100 pb-4 mb-6 italic uppercase">Core Identity</h4>
+                           <h4 className="text-xl font-headline font-black text-zinc-900 border-b border-zinc-100 pb-4 mb-6 uppercase">Core Identity</h4>
 
                            <div className="space-y-6">
                               <div>
@@ -119,7 +119,7 @@ export default function AdminRegistrations() {
                      </div>
 
                      <div className="space-y-8">
-                        <h4 className="text-xl font-headline font-black text-zinc-900 px-4 italic uppercase">Verification Assets</h4>
+                        <h4 className="text-xl font-headline font-black text-zinc-900 px-4 uppercase">Verification Assets</h4>
 
                         <div className="space-y-6">
                            <div className="space-y-3">
@@ -155,7 +155,7 @@ export default function AdminRegistrations() {
          {/* Header */}
          <header className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-6">
             <div>
-               <h2 className="text-4xl font-headline font-black text-zinc-900 uppercase italic">Business <span className="text-[#CBA35C]">Registrations</span></h2>
+               <h2 className="text-4xl font-headline font-black text-zinc-900 uppercase">Business <span className="text-[#CBA35C]">Registrations</span></h2>
                <p className="text-zinc-500 font-medium">Full database of all registered retailers across the ecosystem.</p>
             </div>
 
@@ -215,7 +215,7 @@ export default function AdminRegistrations() {
          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
             <div className="bg-white p-6 rounded-3xl border border-zinc-100 shadow-sm">
                <span className="text-[10px] font-black text-zinc-400 uppercase tracking-[0.2em]">Registered Partners</span>
-               <span className="block text-4xl font-headline font-black text-zinc-900 mt-2 italic">{users.length}</span>
+               <span className="block text-4xl font-headline font-black text-zinc-900 mt-2">{users.length}</span>
             </div>
          </div>
 
@@ -225,36 +225,36 @@ export default function AdminRegistrations() {
                <table className="w-full text-left">
                   <thead className="bg-[#CBA35C] text-black">
                      <tr>
-                        <th className="p-6 text-[10px] font-black uppercase tracking-widest font-headline italic">Retailer Name</th>
-                        <th className="p-6 text-[10px] font-black uppercase tracking-widest font-headline italic">Gift Chosen</th>
-                        <th className="p-6 text-[10px] font-black uppercase tracking-widest font-headline italic">Slab No</th>
-                        <th className="p-6 text-[10px] font-black uppercase tracking-widest font-headline italic">Slab Detail</th>
-                        <th className="p-6 text-[10px] font-black uppercase tracking-widest font-headline italic">Total Qty</th>
-                        <th className="p-6 text-[10px] font-black uppercase tracking-widest text-right font-headline italic">Actions</th>
+                        <th className="p-6 text-[10px] font-black uppercase tracking-widest font-headline">Retailer Name</th>
+                        <th className="p-6 text-[10px] font-black uppercase tracking-widest font-headline">Gift Chosen</th>
+                        <th className="p-6 text-[10px] font-black uppercase tracking-widest font-headline">Slab No</th>
+                        <th className="p-6 text-[10px] font-black uppercase tracking-widest font-headline">Slab Detail</th>
+                        <th className="p-6 text-[10px] font-black uppercase tracking-widest font-headline">Total Qty</th>
+                        <th className="p-6 text-[10px] font-black uppercase tracking-widest text-right font-headline">Actions</th>
                      </tr>
                   </thead>
                   <tbody className="divide-y divide-zinc-100">
                      {users.length === 0 ? (
                         <tr>
-                           <td colSpan={6} className="p-12 text-center text-zinc-400 font-medium italic">No registrations recorded yet.</td>
+                           <td colSpan={6} className="p-12 text-center text-zinc-400 font-medium">No registrations recorded yet.</td>
                         </tr>
                      ) : (
                         users.map((user) => (
                            <tr key={user.phone} className="hover:bg-zinc-50 transition-colors">
                               <td className="p-6">
-                                 <span className="block font-headline font-black text-zinc-900 uppercase italic leading-tight">{user.name}</span>
+                                 <span className="block font-headline font-black text-zinc-900 uppercase leading-tight">{user.name}</span>
                                  <span className="text-[8px] text-zinc-500 font-bold uppercase tracking-tight">{user.shopName} • {user.city}</span>
-                                 <div className="text-[8px] text-[#CBA35C] font-black tracking-widest mt-1 uppercase italic underline">{user.phone}</div>
+                                 <div className="text-[8px] text-[#CBA35C] font-black tracking-widest mt-1 uppercase underline">{user.phone}</div>
                               </td>
                               <td className="p-6">
-                                 <span className={`text-[10px] font-black uppercase tracking-widest italic flex items-center gap-2 ${user.claimedGift ? 'text-indigo-600' : 'text-zinc-300'}`}>
+                                 <span className={`text-[10px] font-black uppercase tracking-widest flex items-center gap-2 ${user.claimedGift ? 'text-indigo-600' : 'text-zinc-300'}`}>
                                     <span className="material-symbols-outlined text-xs">{user.claimedGift ? 'redeem' : 'pending'}</span>
                                     {user.claimedGift || 'NONE'}
                                  </span>
                               </td>
                               <td className="p-6">
                                  <div className="relative group w-fit cursor-pointer">
-                                    <span className={`inline-flex px-3 py-1 rounded-lg text-[10px] font-black tracking-widest italic border transition-all ${user.overrideSlabId ? 'bg-[#CBA35C] text-black border-[#CBA35C] shadow-[0_0_15px_rgba(203,163,92,0.3)]' : 'bg-zinc-900 text-white border-zinc-800'}`}>
+                                    <span className={`inline-flex px-3 py-1 rounded-lg text-[10px] font-black tracking-widest border transition-all ${user.overrideSlabId ? 'bg-[#CBA35C] text-black border-[#CBA35C] shadow-[0_0_15px_rgba(203,163,92,0.3)]' : 'bg-zinc-900 text-white border-zinc-800'}`}>
                                        {user.slabNo === '—' ? 'NONE' : `SLAB ${user.slabNo}`}
                                        {user.overrideSlabId && <span className="ml-2 material-symbols-outlined text-[10px]">edit</span>}
                                     </span>
@@ -277,12 +277,12 @@ export default function AdminRegistrations() {
                                  </div>
                               </td>
                               <td className="p-6">
-                                 <span className="text-[8px] text-zinc-400 font-black uppercase tracking-widest italic leading-tight block max-w-[100px]">
+                                 <span className="text-[8px] text-zinc-400 font-black uppercase tracking-widest leading-tight block max-w-[100px]">
                                     {user.slabName || '—'}
                                  </span>
                               </td>
                               <td className="p-6">
-                                 <span className="text-lg font-headline font-black text-zinc-900 italic tracking-tighter">
+                                 <span className="text-lg font-headline font-black text-zinc-900 tracking-tighter">
                                     {user.totalQty} <span className="text-[10px] text-zinc-400">QTL+</span>
                                  </span>
                               </td>

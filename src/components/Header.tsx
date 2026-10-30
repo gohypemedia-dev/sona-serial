@@ -25,6 +25,29 @@ export default function Header() {
     window.location.href = "/";
   };
 
+  const handleAccountClick = (e: React.MouseEvent) => {
+    if (pathname === "/") {
+      e.preventDefault();
+      const params = new URLSearchParams(window.location.search);
+      if (params.get("mode") !== "login") {
+        window.history.pushState(null, "", "/?mode=login#auth-card");
+        window.dispatchEvent(new PopStateEvent("popstate"));
+      } else {
+        const card = document.getElementById("auth-card") || document.getElementById("registration-section");
+        if (card) {
+          const rect = card.getBoundingClientRect();
+          const headerOffset = 80;
+          if (rect.height < window.innerHeight - headerOffset) {
+            card.scrollIntoView({ behavior: "smooth", block: "center" });
+          } else {
+            const top = rect.top + window.scrollY - headerOffset - 16;
+            window.scrollTo({ top, behavior: "smooth" });
+          }
+        }
+      }
+    }
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -56,7 +79,7 @@ export default function Header() {
           <Link href="/" className="flex items-center gap-2 md:gap-3 group min-w-0 flex-1 md:flex-none">
             <img src="/logo-blank.png" alt="Sona Cereal" className="h-7 md:h-10 w-auto group-hover:scale-105 transition-transform" />
             <div className="flex flex-col min-w-0">
-              <span className="text-xs md:text-xl font-headline font-black italic uppercase leading-none text-zinc-900 group-hover:text-primary transition-colors truncate">
+              <span className="text-xs md:text-xl font-headline font-black uppercase leading-none text-zinc-900 group-hover:text-primary transition-colors truncate">
                 SONA CEREAL
               </span>
               <span className="hidden md:block text-[10px] font-black uppercase tracking-[0.3em] text-zinc-400 group-hover:text-primary/70 transition-colors">
@@ -73,7 +96,7 @@ export default function Header() {
                 <Link key={link.name} href={link.href} className="relative py-2 group">
                   <span
                     className={`text-sm font-headline font-black uppercase tracking-wider transition-colors ${isActive
-                      ? "text-primary italic"
+                      ? "text-primary"
                       : "text-zinc-500 hover:text-zinc-900"
                       }`}
                   >
@@ -91,13 +114,13 @@ export default function Header() {
           {/* Action Buttons */}
           <div className="flex items-center gap-4">
             <Link
-              href="/dashboard"
-              className={`hidden md:flex items-center justify-center w-12 h-12 rounded-full transition-all duration-500 shadow-xl group/dashboard border border-zinc-100/50 ${pathname === "/dashboard"
-                ? "bg-[#CBA35C] text-black"
-                : "bg-zinc-900 text-white hover:bg-[#CBA35C] hover:text-black hover:scale-110 active:scale-95"
-                }`}
+              href="/?mode=login#auth-card"
+              onClick={handleAccountClick}
+              title="Retailer Login"
+              aria-label="Retailer Login"
+              className="hidden md:flex items-center justify-center w-11 h-11 rounded-full bg-transparent text-zinc-900 hover:text-[#CBA35C] hover:bg-zinc-100/60 active:scale-95 transition-all duration-300"
             >
-              <span className="material-symbols-outlined text-2xl">account_circle</span>
+              <span className="material-symbols-outlined text-[32px]">account_circle</span>
             </Link>
 
             {/* Mobile Trigger */}
@@ -154,7 +177,7 @@ export default function Header() {
                     }`}
                 >
                   <span
-                    className={`text-xl font-headline font-black uppercase italic ${isActive ? "text-primary" : "text-zinc-400 group-hover:text-zinc-900"
+                    className={`text-xl font-headline font-black uppercase ${isActive ? "text-primary" : "text-zinc-400 group-hover:text-zinc-900"
                       }`}
                   >
                     {link.name}
@@ -173,12 +196,15 @@ export default function Header() {
           </nav>
           <div className="mt-auto space-y-4 text-center">
             <Link
-              href="/dashboard"
-              onClick={toggleMobileMenu}
+              href="/?mode=login#auth-card"
+              onClick={(e) => {
+                toggleMobileMenu();
+                handleAccountClick(e);
+              }}
               className="w-full bg-zinc-900 text-white py-4 rounded-xl font-headline font-black uppercase text-sm flex items-center justify-center gap-3 shadow-2xl hover:bg-[#CBA35C] hover:text-black transition-colors"
             >
               <span className="material-symbols-outlined text-xl">account_circle</span>
-              PARTNER DASHBOARD
+              LOGIN TO PORTAL
             </Link>
             <p className="text-center text-[10px] text-zinc-600 font-bold uppercase tracking-[.25em] pt-4">
               Sona Cereal Ecosystem

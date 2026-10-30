@@ -38,7 +38,7 @@ export default function AdminLayout({
            
            <div className="max-w-md w-full relative z-10 space-y-12">
               <div className="text-center animate-in fade-in slide-in-from-bottom-8 duration-700">
-                 <h1 className="text-4xl md:text-6xl font-headline font-black italic text-white leading-none tracking-tighter">
+                 <h1 className="text-4xl md:text-6xl font-headline font-black text-white leading-none tracking-tighter">
                     COMMAND <br />
                     <span className="text-[#CBA35C]">CENTER.</span>
                  </h1>
@@ -75,7 +75,7 @@ export default function AdminLayout({
       {/* Sidebar - Fixed */}
       <aside className="fixed left-0 top-0 h-full w-64 bg-zinc-900 text-white p-8 hidden lg:flex flex-col z-50">
         <div className="mb-12">
-          <h1 className="text-2xl font-headline font-black italic">
+          <h1 className="text-2xl font-headline font-black">
             SONA <span className="text-[#CBA35C]">ADMIN</span>
           </h1>
           <p className="text-[10px] text-zinc-500 font-bold uppercase tracking-widest mt-1">Command Center 2026</p>

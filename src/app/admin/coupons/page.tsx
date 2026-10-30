@@ -118,7 +118,7 @@ export default function AdminCouponsPage() {
     <div className="p-8 space-y-8">
       <div className="flex justify-between items-end">
         <div>
-          <h2 className="text-4xl font-headline font-black italic uppercase tracking-tighter text-zinc-900">
+          <h2 className="text-4xl font-headline font-black uppercase tracking-tighter text-zinc-900">
             COUPON <span className="text-[#CBA35C]">MANAGEMENT</span>
           </h2>
           <p className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest mt-2">Create, import and track coupons</p>
@@ -138,7 +138,7 @@ export default function AdminCouponsPage() {
 
       {isAdding && (
         <div className="bg-white p-8 rounded-[2rem] border border-zinc-100 shadow-xl space-y-6">
-          <h3 className="text-xl font-headline font-black italic uppercase">Add New Coupon</h3>
+          <h3 className="text-xl font-headline font-black uppercase">Add New Coupon</h3>
           <form onSubmit={handleAddCoupon} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <input type="text" placeholder="Coupon Code" value={newCoupon.code} onChange={e => setNewCoupon({code: e.target.value})} className="p-4 border border-zinc-200 rounded-xl" required />
             <button type="submit" className="bg-[#CBA35C] text-black font-black uppercase text-sm rounded-xl py-4 hover:opacity-80">Save Coupon</button>
@@ -194,7 +194,7 @@ export default function AdminCouponsPage() {
               {loading ? (
                 <tr><td colSpan={5} className="text-center p-8">Loading...</td></tr>
               ) : coupons.length === 0 ? (
-                <tr><td colSpan={5} className="text-center p-8 text-zinc-500 font-medium italic">No coupons found</td></tr>
+                <tr><td colSpan={5} className="text-center p-8 text-zinc-500 font-medium">No coupons found</td></tr>
               ) : coupons.map((c: any) => (
                 <tr key={c.id} className="border-b border-zinc-50 hover:bg-zinc-50/50 transition-colors">
                   <td className="p-4 pl-6 font-bold text-zinc-900">{c.code}</td>
@@ -217,7 +217,7 @@ export default function AdminCouponsPage() {
                       </div>
                     ) : "-"}
                   </td>
-                  <td className="p-4 text-sm text-zinc-600 italic">
+                  <td className="p-4 text-sm text-zinc-600">
                     {c.redemption?.selectedGift || "-"}
                   </td>
                   <td className="p-4 pr-6 text-right">

@@ -72,7 +72,7 @@ export default function HelpdeskPage() {
       <section className="relative md:min-h-[480px] flex items-center bg-zinc-50 overflow-hidden pt-14 md:pt-16 -skew-y-3 origin-left">
 
         <div className="max-w-7xl mx-auto px-6 relative z-10 text-center skew-y-3">
-          <h1 className="font-headline font-black text-zinc-900 text-3xl md:text-8xl italic uppercase leading-[0.8] tracking-tighter mb-6 font-headline">
+          <h1 className="font-headline font-black text-zinc-900 text-3xl md:text-8xl uppercase leading-[0.8] tracking-tighter mb-6 font-headline">
             Support <br />
             <span className="text-primary">Center</span>
           </h1>
@@ -149,8 +149,7 @@ export default function HelpdeskPage() {
       {/* Popular FAQs: Accordion Section */}
       <section className="bg-zinc-50 py-10 md:py-20">
         <div className="max-w-4xl mx-auto px-6">
-          <h2 className="font-headline font-black text-4xl uppercase tracking-tighter mb-12 flex items-center gap-4 text-zinc-900">
-            <span className="w-12 h-1 bg-primary"></span>
+          <h2 className="font-headline font-black text-4xl uppercase tracking-tighter mb-12 text-zinc-900">
             Popular Questions
           </h2>
           <div className="space-y-4">
@@ -208,7 +207,7 @@ export default function HelpdeskPage() {
 
             <div className="flex flex-wrap gap-4 relative z-10 pt-4 border-t border-black/5">
               <a
-                className="bg-black text-primary flex items-center gap-3 px-8 py-4 rounded-full font-headline font-black uppercase italic tracking-widest text-sm hover:scale-105 transition-all shadow-xl"
+                className="bg-black text-primary flex items-center gap-3 px-8 py-4 rounded-full font-headline font-black uppercase tracking-widest text-sm hover:scale-105 transition-all shadow-xl"
                 href="https://wa.me/918368926325"
                 target="_blank"
               >
@@ -231,7 +230,7 @@ export default function HelpdeskPage() {
             {success ? (
               <div className="bg-primary/10 border border-primary/20 p-8 rounded-2xl text-center space-y-4">
                 <span className="material-symbols-outlined text-primary text-5xl">check_circle</span>
-                <h4 className="font-headline font-black text-xl uppercase italic">Message Sent</h4>
+                <h4 className="font-headline font-black text-xl uppercase">Message Sent</h4>
                 <p className="text-zinc-400 text-sm">Our elite support team will reach out to you shortly.</p>
                 <button onClick={() => setSuccess(false)} className="text-primary font-black text-[10px] uppercase tracking-widest underline pt-4">Send another message</button>
               </div>

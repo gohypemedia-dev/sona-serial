@@ -17,16 +17,13 @@ export default function TermsPage() {
             <span className="inline-block bg-secondary-container text-on-secondary-fixed-variant px-4 py-1 rounded-full text-xs font-black uppercase tracking-[0.2em] mb-6">
               Official Rules
             </span>
-            <h1 className="font-headline font-black text-zinc-900 text-3xl md:text-8xl italic uppercase leading-[0.85] tracking-tighter editorial-text-shadow">
+            <h1 className="font-headline font-black text-zinc-900 text-3xl md:text-8xl uppercase leading-[0.85] tracking-tighter editorial-text-shadow">
               Terms &amp; <br />
               <span className="text-primary">Conditions</span>
             </h1>
-            <div className="mt-10 flex items-center gap-4">
-              <div className="h-1 w-20 bg-primary"></div>
-              <p className="text-sm font-bold uppercase tracking-widest text-zinc-500 font-headline">
-                Last Updated: April 2026
-              </p>
-            </div>
+            <p className="mt-8 md:mt-12 text-xs md:text-sm font-bold uppercase tracking-widest text-zinc-400 font-headline">
+              Last Updated: April 2026
+            </p>
           </div>
         </div>
       </section>
@@ -38,11 +35,11 @@ export default function TermsPage() {
             {/* Introduction */}
             <div className="group">
               <div className="flex items-start gap-6">
-                <span className="text-4xl font-black font-headline italic text-zinc-100 group-hover:text-primary transition-colors leading-none">
+                <span className="text-4xl font-black font-headline text-zinc-100 group-hover:text-primary transition-colors leading-none">
                   01
                 </span>
                 <div>
-                  <h2 className="text-xl md:text-2xl font-black font-headline italic uppercase text-zinc-600 group-hover:text-primary transition-colors duration-300 mb-6">
+                  <h2 className="text-xl md:text-2xl font-black font-headline uppercase text-zinc-600 group-hover:text-primary transition-colors duration-300 mb-6">
                     Retailer Partnership
                   </h2>
                   <p className="text-body-md leading-relaxed text-zinc-600 mb-4">
@@ -59,11 +56,11 @@ export default function TermsPage() {
             {/* Eligibility */}
             <div className="group">
               <div className="flex items-start gap-6">
-                <span className="text-4xl font-black font-headline italic text-zinc-100 group-hover:text-primary transition-colors leading-none">
+                <span className="text-4xl font-black font-headline text-zinc-100 group-hover:text-primary transition-colors leading-none">
                   02
                 </span>
                 <div>
-                  <h2 className="text-2xl font-black font-headline italic uppercase text-zinc-600 group-hover:text-primary transition-colors duration-300 mb-6">
+                  <h2 className="text-2xl font-black font-headline uppercase text-zinc-600 group-hover:text-primary transition-colors duration-300 mb-6">
                     Eligibility & Validation
                   </h2>
                   <ul className="space-y-4">
@@ -91,11 +88,11 @@ export default function TermsPage() {
             {/* Promotion Period */}
             <div className="group hover:bg-zinc-50 transition-all duration-500 -mx-8 md:-mx-12 p-8 md:p-12 rounded-3xl">
               <div className="flex items-start gap-6">
-                <span className="text-4xl font-black font-headline italic text-zinc-100 group-hover:text-primary transition-colors leading-none">
+                <span className="text-4xl font-black font-headline text-zinc-100 group-hover:text-primary transition-colors leading-none">
                   03
                 </span>
                 <div>
-                  <h2 className="text-2xl font-black font-headline italic uppercase text-zinc-600 group-hover:text-primary transition-colors duration-300 mb-6">
+                  <h2 className="text-2xl font-black font-headline uppercase text-zinc-600 group-hover:text-primary transition-colors duration-300 mb-6">
                     Slab Campaign Duration
                   </h2>
                   <p className="text-body-md leading-relaxed text-zinc-600">
@@ -111,11 +108,11 @@ export default function TermsPage() {
             {/* How to Participate */}
             <div className="group">
               <div className="flex items-start gap-6">
-                <span className="text-4xl font-black font-headline italic text-zinc-200 group-hover:text-secondary transition-colors leading-none">
+                <span className="text-4xl font-black font-headline text-zinc-200 group-hover:text-secondary transition-colors leading-none">
                   04
                 </span>
                 <div>
-                  <h2 className="text-2xl font-black font-headline italic uppercase text-zinc-600 group-hover:text-primary transition-colors duration-300 mb-6">
+                  <h2 className="text-2xl font-black font-headline uppercase text-zinc-600 group-hover:text-primary transition-colors duration-300 mb-6">
                     Invoice Submission Workflow
                   </h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
@@ -147,11 +144,11 @@ export default function TermsPage() {
             {/* Prizes */}
             <div className="group">
               <div className="flex items-start gap-6">
-                <span className="text-4xl font-black font-headline italic text-zinc-200 group-hover:text-secondary transition-colors leading-none">
+                <span className="text-4xl font-black font-headline text-zinc-200 group-hover:text-secondary transition-colors leading-none">
                   05
                 </span>
                 <div>
-                  <h2 className="text-2xl font-black font-headline italic uppercase text-zinc-600 group-hover:text-primary transition-colors duration-300 mb-6">
+                  <h2 className="text-2xl font-black font-headline uppercase text-zinc-600 group-hover:text-primary transition-colors duration-300 mb-6">
                     Slab Awards & Redemption
                   </h2>
                   <p className="text-body-md leading-relaxed text-zinc-600 mb-6">
@@ -180,11 +177,11 @@ export default function TermsPage() {
             {/* General Conditions */}
             <div className="group">
               <div className="flex items-start gap-6">
-                <span className="text-4xl font-black font-headline italic text-zinc-200 group-hover:text-secondary transition-colors leading-none">
+                <span className="text-4xl font-black font-headline text-zinc-200 group-hover:text-secondary transition-colors leading-none">
                   06
                 </span>
                 <div>
-                  <h2 className="text-2xl font-black font-headline italic uppercase text-zinc-600 group-hover:text-primary transition-colors duration-300 mb-6">
+                  <h2 className="text-2xl font-black font-headline uppercase text-zinc-600 group-hover:text-primary transition-colors duration-300 mb-6">
                     General Conditions
                   </h2>
                   <p className="text-body-md leading-relaxed text-on-surface-variant">
@@ -202,11 +199,11 @@ export default function TermsPage() {
             {/* Privacy */}
             <div className="group">
               <div className="flex items-start gap-6">
-                <span className="text-4xl font-black font-headline italic text-zinc-200 group-hover:text-secondary transition-colors leading-none">
+                <span className="text-4xl font-black font-headline text-zinc-200 group-hover:text-secondary transition-colors leading-none">
                   07
                 </span>
                 <div>
-                  <h2 className="text-2xl font-black font-headline italic uppercase text-zinc-600 group-hover:text-primary transition-colors duration-300 mb-6">
+                  <h2 className="text-2xl font-black font-headline uppercase text-zinc-600 group-hover:text-primary transition-colors duration-300 mb-6">
                     Privacy &amp; Data Use
                   </h2>
                   <p className="text-body-md leading-relaxed text-on-surface-variant">
