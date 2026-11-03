@@ -60,6 +60,8 @@ model Submission {
 model Settings {
   id                 String   @id @default("global")
   rewardsDistributed Boolean  @default(false)
+  offerStart         String   @default("2026-10-01")
+  offerEnd           String   @default("2027-03-15")
   updatedAt          DateTime @updatedAt
 }
 
@@ -67,6 +69,7 @@ model Slab {
   id        String   @id @default(uuid())
   level     String
   target    Int
+  active    Boolean  @default(true)
   giftA     String
   giftAImg  String?
   giftB     String?

@@ -7,7 +7,7 @@ export const dynamic = 'force-dynamic';
 export async function GET() {
   try {
     const users = await getUsers();
-    const slabs = await prisma.slab.findMany({ orderBy: { target: 'asc' } });
+    const slabs = await prisma.slab.findMany({ where: { active: true }, orderBy: { target: 'asc' } });
 
     // Enrich users with stats
     const enrichedUsers = await Promise.all(users.map(async (user: any) => {

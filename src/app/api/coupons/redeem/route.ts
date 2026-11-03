@@ -39,6 +39,7 @@ export async function POST(req: Request) {
       const totalAcceptedQty = userSubmissions.reduce((acc, sub) => acc + (parseFloat(sub.capacity) || 0), 0);
 
       const slabs = await tx.slab.findMany({
+        where: { active: true },
         orderBy: { target: "asc" },
       });
 

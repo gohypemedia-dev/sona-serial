@@ -136,6 +136,7 @@ export async function claimGift(id: string, gift: string) {
  */
 export async function getSlabs() {
   return (prisma as any).slab.findMany({
+    where: { active: true },
     orderBy: { target: 'asc' }
   });
 }
@@ -154,7 +155,7 @@ export async function saveSlab(data: any) {
 }
 
 export async function deleteSlab(id: string) {
-  return (prisma as any).slab.delete({ where: { id } });
+  return prisma.slab.update({ where: { id }, data: { active: false } });
 }
 
 /**

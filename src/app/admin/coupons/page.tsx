@@ -118,30 +118,30 @@ export default function AdminCouponsPage() {
     <div className="p-8 space-y-8">
       <div className="flex justify-between items-end">
         <div>
-          <h2 className="text-4xl font-headline font-black uppercase tracking-tighter text-zinc-900">
+          <h2 className="text-4xl font-headline font-semibold uppercase tracking-tighter text-zinc-900">
             COUPON <span className="text-[#CBA35C]">MANAGEMENT</span>
           </h2>
           <p className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest mt-2">Create, import and track coupons</p>
         </div>
         <div className="flex gap-4">
-          <button onClick={handleDeleteAll} className="bg-red-50 text-red-600 px-6 py-3 rounded-xl font-black text-xs uppercase tracking-widest hover:bg-red-100 transition-colors">
+          <button onClick={handleDeleteAll} className="bg-red-50 text-red-600 px-6 py-3 rounded-xl font-semibold text-xs uppercase tracking-widest hover:bg-red-100 transition-colors">
             Delete All
           </button>
-          <button onClick={handleExport} className="bg-zinc-100 text-zinc-600 px-6 py-3 rounded-xl font-black text-xs uppercase tracking-widest hover:bg-zinc-200 transition-colors">
+          <button onClick={handleExport} className="bg-zinc-100 text-zinc-600 px-6 py-3 rounded-xl font-semibold text-xs uppercase tracking-widest hover:bg-zinc-200 transition-colors">
             Export Redemptions CSV
           </button>
-          <button onClick={() => setIsAdding(!isAdding)} className="bg-zinc-900 text-white px-6 py-3 rounded-xl font-black text-xs uppercase tracking-widest hover:bg-[#CBA35C] hover:text-black transition-colors">
+          <button onClick={() => setIsAdding(!isAdding)} className="bg-zinc-900 text-white px-6 py-3 rounded-xl font-semibold text-xs uppercase tracking-widest hover:bg-[#CBA35C] hover:text-black transition-colors">
             {isAdding ? "Close" : "+ Add Manual"}
           </button>
         </div>
       </div>
 
       {isAdding && (
-        <div className="bg-white p-8 rounded-[2rem] border border-zinc-100 shadow-xl space-y-6">
-          <h3 className="text-xl font-headline font-black uppercase">Add New Coupon</h3>
+        <div className="bg-white p-8 rounded-xl border border-zinc-100 shadow-sm space-y-6">
+          <h3 className="text-xl font-headline font-semibold uppercase">Add New Coupon</h3>
           <form onSubmit={handleAddCoupon} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <input type="text" placeholder="Coupon Code" value={newCoupon.code} onChange={e => setNewCoupon({code: e.target.value})} className="p-4 border border-zinc-200 rounded-xl" required />
-            <button type="submit" className="bg-[#CBA35C] text-black font-black uppercase text-sm rounded-xl py-4 hover:opacity-80">Save Coupon</button>
+            <button type="submit" className="bg-[#CBA35C] text-black font-semibold uppercase text-sm rounded-xl py-4 hover:opacity-80">Save Coupon</button>
           </form>
 
           <div className="pt-6 border-t border-zinc-100 flex items-center gap-4">
@@ -149,7 +149,7 @@ export default function AdminCouponsPage() {
               <p className="text-sm font-bold uppercase text-zinc-500 mb-2">Or Import via CSV</p>
               <input type="file" accept=".csv" onChange={(e) => setFile(e.target.files?.[0] || null)} className="text-sm" />
             </div>
-            <button onClick={handleImport} className="bg-zinc-900 text-white px-6 py-2 rounded-xl font-black text-xs uppercase hover:bg-zinc-800">
+            <button onClick={handleImport} className="bg-zinc-900 text-white px-6 py-2 rounded-xl font-semibold text-xs uppercase hover:bg-zinc-800">
               Upload & Import
             </button>
             <a href="data:text/csv;charset=utf-8,code%0AABC123%0AXYZ999" download="template.csv" className="text-xs text-blue-500 underline">Download Template</a>
@@ -157,7 +157,7 @@ export default function AdminCouponsPage() {
         </div>
       )}
 
-      <div className="bg-white rounded-[2rem] border border-zinc-100 overflow-hidden shadow-sm">
+      <div className="bg-white rounded-xl border border-zinc-100 overflow-hidden shadow-sm">
         <div className="p-6 border-b border-zinc-100 flex flex-wrap gap-4 justify-between items-center bg-zinc-50/50">
           <input 
             type="text" 
@@ -183,11 +183,11 @@ export default function AdminCouponsPage() {
           <table className="w-full text-left border-collapse">
             <thead>
               <tr className="bg-zinc-50 border-b border-zinc-100 text-[10px] uppercase tracking-widest text-zinc-400">
-                <th className="p-4 pl-6 font-black">Code</th>
-                <th className="p-4 font-black">Status</th>
-                <th className="p-4 font-black">Redeemed By</th>
-                <th className="p-4 font-black">Gift Selected</th>
-                <th className="p-4 pr-6 text-right font-black">Actions</th>
+                <th className="p-4 pl-6 font-semibold">Code</th>
+                <th className="p-4 font-semibold">Status</th>
+                <th className="p-4 font-semibold">Redeemed By</th>
+                <th className="p-4 font-semibold">Gift Selected</th>
+                <th className="p-4 pr-6 text-right font-semibold">Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -199,7 +199,7 @@ export default function AdminCouponsPage() {
                 <tr key={c.id} className="border-b border-zinc-50 hover:bg-zinc-50/50 transition-colors">
                   <td className="p-4 pl-6 font-bold text-zinc-900">{c.code}</td>
                   <td className="p-4">
-                    <span className={`px-3 py-1 rounded-full text-[10px] font-black tracking-widest ${
+                    <span className={`px-3 py-1 rounded-full text-[10px] font-semibold tracking-widest ${
                       c.status === 'AVAILABLE' ? 'bg-green-100 text-green-700' :
                       c.status === 'REDEEMED' ? 'bg-blue-100 text-blue-700' :
                       c.status === 'DISABLED' ? 'bg-red-100 text-red-700' :

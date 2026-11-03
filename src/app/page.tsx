@@ -991,7 +991,7 @@ export default function HomePage() {
                                     </div>
                                     <div className="space-y-4 max-w-sm mx-auto px-6">
                                        <h5 className="text-l font-headline font-black uppercase tracking-tight text-zinc-900 leading-none">Business Registered Successfully</h5>
-                                       <p className="text-zinc-500 text-sm font-medium">Sell Sona Cereal slabs to hit our exclusive rewards tiers. Once you reach a milestoneof 200qtl+ claim your rewards instantly!</p>
+                                       <p className="text-zinc-500 text-sm font-medium">Sell Sona Cereal slabs to hit our exclusive rewards tiers. Reach the published QTL milestones to qualify for rewards when claims open.</p>
                                     </div>
                                     <div className="pt-8 flex flex-col items-center gap-6">
                                        <button type="submit" disabled={isSubmitting} className="group bg-zinc-900 text-white px-12 py-6 rounded-full font-headline font-black text-lg uppercase tracking-widest hover:bg-[#CBA35C] hover:text-black transition-all shadow-2xl flex items-center gap-6 active:scale-95 disabled:opacity-50">
